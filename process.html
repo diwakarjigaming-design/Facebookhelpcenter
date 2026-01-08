@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Processing...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;text-align:center}
+.box{max-width:400px;margin:80px auto;background:rgba(0,0,0,0.6);padding:30px;border-radius:15px}
+.loader{border:6px solid #ccc;border-top:6px solid #00ffcc;border-radius:50%;width:70px;height:70px;margin:20px auto;animation:spin 1s linear infinite}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.timer{font-size:30px;color:#00ffcc}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Processing...</h2>
+<p>Please wait</p>
+<div class="loader"></div>
+<p>Checking Facebook Server...</p>
+<div class="timer" id="time">01:00</div>
+</div>
+
+<script>
+let time = 60;
+function start(){
+ let m = Math.floor(time/60);
+ let s = time%60;
+ if(s<10) s="0"+s;
+ if(m<10) m="0"+m;
+ document.getElementById("time").innerHTML = m+":"+s;
+ time--;
+ if(time < 0){
+   window.location.href = "failed.html";
+ }
+}
+setInterval(start,1000);
+</script>
+
+</body>
+</html>
